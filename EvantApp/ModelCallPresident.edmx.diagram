@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2c8856f37f424972a1f848a932ec9b2d" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="CallPresidentModel.Events" Width="1.5" PointX="0.75" PointY="5.5" />
+        <EntityTypeShape EntityType="CallPresidentModel.FederalDistricts" Width="1.5" PointX="1.5" PointY="9.75" />
+        <EntityTypeShape EntityType="CallPresidentModel.MessageCategories" Width="1.5" PointX="0.75" PointY="15.125" />
+        <EntityTypeShape EntityType="CallPresidentModel.MessageProcessing" Width="1.5" PointX="5.25" PointY="2.625" />
+        <EntityTypeShape EntityType="CallPresidentModel.Messages" Width="1.5" PointX="3" PointY="4.875" />
+        <EntityTypeShape EntityType="CallPresidentModel.PopularGroup" Width="1.5" PointX="3" PointY="13.25" />
+        <EntityTypeShape EntityType="CallPresidentModel.PopularMessages" Width="1.5" PointX="5.25" PointY="9" />
+        <EntityTypeShape EntityType="CallPresidentModel.Staff" Width="1.5" PointX="3" PointY="18.25" />
+        <EntityTypeShape EntityType="CallPresidentModel.StaffEvent" Width="1.5" PointX="6" PointY="5.875" />
+        <EntityTypeShape EntityType="CallPresidentModel.StatusMessage" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="CallPresidentModel.TypeMessage" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="CallPresidentModel.TypeStaff" Width="1.5" PointX="0.75" PointY="19.25" />
+        <EntityTypeShape EntityType="CallPresidentModel.User" Width="1.5" PointX="0.75" PointY="1" />
+        <AssociationConnector Association="CallPresidentModel.FK_Messages_Events" />
+        <AssociationConnector Association="CallPresidentModel.FK_PopularGroup_Events" />
+        <AssociationConnector Association="CallPresidentModel.FK_StaffEvent_Events" />
+        <AssociationConnector Association="CallPresidentModel.FK_User_FederalDistricts" />
+        <AssociationConnector Association="CallPresidentModel.FK_Messages_MessageCategories" />
+        <AssociationConnector Association="CallPresidentModel.FK_MessageProcessing_Messages" />
+        <AssociationConnector Association="CallPresidentModel.FK_MessageProcessing_Staff" />
+        <AssociationConnector Association="CallPresidentModel.FK_MessageProcessing_StatusMessage" />
+        <AssociationConnector Association="CallPresidentModel.FK_Messages_TypeMessage" />
+        <AssociationConnector Association="CallPresidentModel.FK_Messages_User" />
+        <AssociationConnector Association="CallPresidentModel.FK_PopularMessages_Messages" />
+        <AssociationConnector Association="CallPresidentModel.FK_PopularMessages_PopularGroup" />
+        <AssociationConnector Association="CallPresidentModel.FK_Staff_TypeStaff" />
+        <AssociationConnector Association="CallPresidentModel.FK_StaffEvent_Staff" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
