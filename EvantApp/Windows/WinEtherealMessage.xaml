@@ -1,0 +1,65 @@
+﻿<Window x:Class="EvantApp.Windows.WinEtherealMessage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EvantApp.Windows"
+        mc:Ignorable="d"
+        Title="Эфирные обращения" Height="450" Width="800" Background="#FF96A6B0">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="10 10 0 0" HorizontalAlignment="Left" Grid.ColumnSpan="2">
+            <Border BorderBrush="CadetBlue" BorderThickness="1" Background="#FFFFEFA7" Width="200" Margin="0 0 0 5">
+                <TextBlock x:Name="TbNameStaff" Text="Staff full name" Foreground="Red" HorizontalAlignment="Center"/>
+            </Border>
+            <Border BorderBrush="CadetBlue" BorderThickness="1" Background="#FFFFEFA7" Margin="0">
+                <TextBlock x:Name="TbTypeStaff" Text="Staff type" Foreground="Red" HorizontalAlignment="Center"/>
+            </Border>
+        </StackPanel>
+        <Border Grid.Column="1" Grid.ColumnSpan="4" BorderBrush="CadetBlue" BorderThickness="1" Background="#FFD2FFE8"  VerticalAlignment="Center" Margin="10 0 190 0">
+            <TextBlock x:Name="TbEventTitle" Text="EventName" Foreground="Red" FontSize="14"   TextAlignment="Center" />
+        </Border>
+        <Button Grid.Column="4" x:Name="BtnExit" Content="Выход" Foreground="Red" FontSize="14" BorderBrush="CadetBlue" 
+                    BorderThickness="1" Background="#FFF5C3AB" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="10 5" Margin="0 10 50 10" Click="BtnExit_Click"/>
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="5" Text="Эфирные обращения" TextAlignment="Center" FontSize="14" Foreground="ForestGreen"/>
+
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="5" Orientation="Horizontal" HorizontalAlignment="Center">
+            <ComboBox x:Name="CmbPopularGroup" Width="230" VerticalAlignment="Center" Margin="10" DisplayMemberPath="Content" SelectedValuePath="IdPopularGroup" SelectedItem="0" SelectionChanged="CmbPopularGroup_SelectionChanged" SelectedIndex="6"/>
+            <ComboBox x:Name="CmbMessCategories" Width="230" VerticalAlignment="Center" Margin="10" DisplayMemberPath="MessageCategorieName" SelectedValuePath="IdMessageCategories" SelectedItem="0" SelectionChanged="CmbMessCategories_SelectionChanged" SelectedIndex="0"/>
+            <ComboBox x:Name="CmbFederalDistrict" Width="230" VerticalAlignment="Center" Margin="10" DisplayMemberPath="FederalDistrictName" SelectedValuePath="IdFederalDistrict" SelectedItem="0" SelectionChanged="CmbFederalDistrict_SelectionChanged" SelectedIndex="0"/>
+        </StackPanel>
+        <DataGrid x:Name="DgMessage" Grid.Row="3" Grid.ColumnSpan="5" AutoGenerateColumns="False" IsReadOnly="True" Margin="10 0" SelectionChanged="DgMessage_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Подавший" Width="2*" Binding="{Binding FullInfoUser}"/>
+                <DataGridTextColumn Header="Категории обращения" Width="1*" Binding="{Binding MessageCategories1.MessageCategorieName}"/>
+                <DataGridTextColumn Header="Дата и время" Width="0.8*" Binding="{Binding DateTime}"/>
+                <DataGridTextColumn Header="Федеральный оруг" Width="1*" Binding="{Binding User.FederalDistricts.FederalDistrictName}"/>
+                <DataGridTextColumn Header="Тип обращения" Width="1*" Binding="{Binding TypeMessage1.TypeMessage1}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="BtnAdd" Grid.Row="4" Grid.ColumnSpan="2" Foreground="red" Content="Догрузить" Background="LightGreen" BorderBrush="CadetBlue" BorderThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="20 10" />
+        <Border Grid.Row="5" Grid.ColumnSpan="2" BorderBrush="CadetBlue" BorderThickness="1" Background="#FFD2FFE8" VerticalAlignment="Top" Margin="10 0">
+            <TextBlock x:Name="TbError" Text="Error log" Foreground="Red" FontSize="14" TextAlignment="Center" TextWrapping="Wrap" />
+        </Border>
+        <Button x:Name="Btn" Grid.Row="4" Grid.RowSpan="2" Grid.Column="2" Foreground="red"  Background="LightGreen" BorderBrush="CadetBlue" BorderThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="20 10" >
+            <TextBlock Text="Пометить как отвечен" TextWrapping="Wrap" TextAlignment="Center"/>
+        </Button>
+        <Border Grid.Row="4" Grid.RowSpan="2" Grid.Column="3" Grid.ColumnSpan="2" BorderBrush="CadetBlue" BorderThickness="1" Background="#FFD2FFE8"  Margin="10 5">
+            <TextBlock x:Name="TbMessageText" Text="Message text" Foreground="Red" FontSize="14" TextAlignment="Center" TextWrapping="Wrap" />
+        </Border>
+    </Grid>
+</Window>

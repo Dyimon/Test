@@ -1,0 +1,57 @@
+﻿<Window x:Class="EvantApp.Windows.WinPopularMessage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EvantApp.Windows"
+        mc:Ignorable="d"
+        Title="WinPopularMessage" Height="450" Width="800" Background="#FF96A6B0">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Top" HorizontalAlignment="Center" Background="PaleGreen" BorderThickness="1" BorderBrush="Blue" Margin="10" Width="400">
+            <TextBlock x:Name="TbEventTitle" Text="Event name" TextAlignment="Center" FontSize="18" Foreground="Red"/>
+        </Border>
+        <TextBlock Grid.Column="1" Grid.ColumnSpan="3" Text="Популярные обращения" FontSize="18" TextAlignment="Center" Foreground="ForestGreen" VerticalAlignment="Bottom" Margin="5"/>
+
+        <ComboBox x:Name="CmbFilt" Grid.ColumnSpan="3" Grid.Row="1" VerticalAlignment="Bottom" DisplayMemberPath="Content" Margin="30 5" 
+                  SelectionChanged="CmbFilt_SelectionChanged" SelectedValuePath="IdPopularGroup"/>
+        <DataGrid x:Name="DgMessage" Grid.ColumnSpan="3" Grid.Row="2" Margin="5" VerticalScrollBarVisibility="Disabled" 
+                  AutoGenerateColumns="False" RowBackground="#FFABD5EE" AlternatingRowBackground="#FFC3CDD3" Background="#FFC3CDD3"
+                  BorderBrush="Blue" BorderThickness="1" SelectionChanged="DgMessage_SelectionChanged" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Популярная группа" Width="*" Binding="{Binding PopularGroup.Content}"/>
+                <DataGridTextColumn Header="обращение" Width="*" Binding="{Binding Messages.MessageText}"/>
+                <DataGridTextColumn Header="Федеральный округ" Width="*" Binding="{Binding Messages.User.FederalDistricts.FederalDistrictName}"/>
+                <DataGridTextColumn Header="голосов" Width="*" Binding="{Binding vote}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="BtnVoice" Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top" 
+                HorizontalAlignment="Center" Content="голосовать" Padding="10 10"
+                Background="LightGreen" BorderBrush="Blue" BorderThickness="1" Click="BtnVoice_Click"/>
+        <MediaElement x:Name="MeVideo" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="2" Margin="10"/>
+
+        <Border Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" BorderThickness="1" BorderBrush="Blue" Background="#FFD2FFE8" 
+                VerticalAlignment="Center"   Margin="0 0 20 5">
+            <TextBlock x:Name="TbError" Text="error log" Foreground="Red" FontSize="14" Padding="10 3" 
+                       TextAlignment="Center" TextWrapping="Wrap" />
+        </Border>
+        <DockPanel Grid.Row="3" Grid.ColumnSpan="3" HorizontalAlignment="Center">
+            <Button x:Name="BtnBack" Content="Назад" Width="70" VerticalAlignment="Center" Padding="0 5" Margin="5"
+                    Background="LightGreen" BorderBrush="Blue" BorderThickness="1"/>
+            <Button x:Name="BtnNext" Content="Вперед" Width="70" VerticalAlignment="Center" Padding="0 5" Margin="5"
+                    Background="LightGreen" BorderBrush="Blue" BorderThickness="1"/>
+        </DockPanel>
+    </Grid>
+</Window>

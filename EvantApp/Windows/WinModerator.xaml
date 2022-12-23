@@ -1,0 +1,100 @@
+﻿<Window x:Class="EvantApp.Windows.WinModerator"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EvantApp.Windows"
+        mc:Ignorable="d"
+        Title="Модерация обращений" Height="450" Width="800" Background="#FF96A6B0">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="1.2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="5">
+            <StackPanel Margin="10 10 0 0" HorizontalAlignment="Left">
+                <Border BorderBrush="CadetBlue" BorderThickness="1" Background="#FFFFEFA7" Width="200" Margin="0 0 0 5">
+                    <TextBlock x:Name="TbNameStaff" Text="Staff full name" Foreground="Red" HorizontalAlignment="Center"/>
+                </Border>
+                <Border BorderBrush="CadetBlue" BorderThickness="1" Background="#FFFFEFA7" Margin="0">
+                    <TextBlock x:Name="TbTypeStaff" Text="Staff type" Foreground="Red" HorizontalAlignment="Center"/>
+                </Border>
+            </StackPanel>
+            
+            
+        </StackPanel>
+
+        <Border Grid.Column="1" Grid.ColumnSpan="4" BorderBrush="CadetBlue" BorderThickness="1" Background="#FFD2FFE8"  VerticalAlignment="Center" Margin="30 0 190 0">
+            <TextBlock x:Name="TbEventTitle" Text="EventName" Foreground="Red" FontSize="14"   TextAlignment="Center" />
+        </Border>
+        <Button Grid.Column="4" x:Name="BtnExit" Content="Выход" Foreground="Red" FontSize="14" BorderBrush="CadetBlue" 
+                    BorderThickness="1" Background="#FFF5C3AB" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="10 5" Margin="0 10 50 10" Click="BtnExit_Click"/>
+        <TextBlock Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Text="Модерация Обращений" TextAlignment="Center" FontSize="14" Foreground="ForestGreen"/>
+        <StackPanel Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2" VerticalAlignment="Top" Margin="10 10">
+            <ComboBox x:Name="CmbMesCategory" Margin="0 0 0 5" DisplayMemberPath="MessageCategorieName" SelectionChanged="CmbMesCategory_SelectionChanged" SelectedValuePath="IdMessageCategories" SelectedIndex="0"/>
+            <ComboBox x:Name="CmbFedDistrict" Margin="0 0 0 5" DisplayMemberPath="FederalDistrictName" SelectionChanged="CmbFedDistrict_SelectionChanged" SelectedValuePath="IdFederalDistrict" SelectedIndex="0"/>
+            <ComboBox x:Name="CmbLastMesStatus" Margin="0 0 0 5" DisplayMemberPath="StatusMessage1" SelectionChanged="CmbLastMesStatus_SelectionChanged" SelectedValuePath="IdStatusMessage" SelectedIndex="0"/>
+            <ComboBox x:Name="CmbProcessed" Margin="0 0 0 10" SelectionChanged="CmbProcessed_SelectionChanged" >
+                <ComboBoxItem Content="Все"/>
+                <ComboBoxItem Content="Обработанные"/>
+                <ComboBoxItem Content="Необработаные"/>
+            </ComboBox>
+            
+            
+        </StackPanel>
+        <DataGrid x:Name="DgMessage" Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="2" BorderBrush="CadetBlue" BorderThickness="1" Margin="10 100 10 0" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="DgMessage_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Категория" Width="*" Binding="{Binding Messages.MessageCategories1.MessageCategorieName}"/>
+                <DataGridTextColumn Header="Дата" Width="*" Binding="{Binding Messages.DateTime}"/>
+                <DataGridTextColumn Header="Округ" Width="*" Binding="{Binding Messages.User.FederalDistricts.FederalDistrictName}"/>
+                <DataGridTextColumn Header="Статус" Width="*" Binding="{Binding StatusMessage.StatusMessage1}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <!--<Border Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="2" BorderBrush="CadetBlue" BorderThickness="1" Margin="10 100 10 0">
+            <TextBlock Background="#FFFFEFA7" Foreground="Red" FontSize="14"/>
+        </Border>-->
+        <Border Grid.Row="4" Grid.ColumnSpan="2" BorderBrush="CadetBlue" BorderThickness="1" Background="#FFD2FFE8" VerticalAlignment="Center" Margin="10 0">
+            <TextBlock x:Name="TbError" Text="Error log" Foreground="Red" FontSize="14" TextAlignment="Center" TextWrapping="Wrap" />
+        </Border>
+        
+        <Border Grid.Row="2" Grid.Column="2" BorderBrush="CadetBlue" BorderThickness="1" Background="#FFD2FFE8" Margin="10">
+            <TextBlock x:Name="TbTextMessage" Text="Message text" Foreground="Red" FontSize="14" TextAlignment="Center" TextWrapping="Wrap"/>
+        </Border>
+        <Border Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" BorderBrush="CadetBlue" BorderThickness="1" Margin="10">
+            <MediaElement x:Name="MeVideo" Source="/Resources/VideoMessage.mp4" LoadedBehavior="Play"/>
+        </Border>
+        <Border Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" BorderBrush="CadetBlue" BorderThickness="1" Background="#FFD2FFE8" Margin="10 0 0 0" VerticalAlignment="Top" MinHeight="60" MaxHeight="80">
+            <TextBlock x:Name="TbUserInfo" Text="User info" Foreground="CadetBlue" FontSize="14" TextAlignment="Center" TextWrapping="Wrap"/>
+        </Border>
+        <Button x:Name="BtnInEther" Grid.Column="4" Grid.Row="3" VerticalAlignment="Top" FontSize="14" Content="В эфир" Background="Red" Width="100" Padding="20 10" Margin="10 20" Click="BtnInEther_Click"/>
+        <Button x:Name="BtnAdd" Grid.Column="2" Grid.Row="3" Foreground="red" Width="30" Height="25" Margin="10 0 0 10" HorizontalAlignment="Left" 
+                VerticalAlignment="Bottom" Background="LightGreen" BorderBrush="CadetBlue" BorderThickness="1" Click="BtnAdd_Click">
+            <TextBlock Text="+" TextAlignment="Center" FontSize="25"  FontWeight="Bold" Margin="0 -9 0 0" />
+        </Button>
+        <ComboBox x:Name="CmbPopularGroup" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" VerticalAlignment="Bottom" Height="25" Margin="50 0 0 10" DisplayMemberPath="Content" SelectedValuePath="IdPopularGroup"/>
+
+        <StackPanel Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3" Orientation="Horizontal" VerticalAlignment="Center">
+            <Button x:Name="BtnRejected" Content="отклонить" Foreground="red" Width="120" Margin="10 0 3 0" Padding="12" FontSize="14"
+                    Background="LightGreen" BorderBrush="CadetBlue" BorderThickness="1" Click="BtnRejected_Click"/>
+            <Button x:Name="BtnProcessing" Content="в обработку" Foreground="red" Width="120" Margin="3 0" FontSize="14"
+                    Background="LightGreen" BorderBrush="CadetBlue" BorderThickness="1" Click="BtnProcessing_Click"/>
+            <Button x:Name="BtnCompleted" Content="завершено" Foreground="red" Width="120" Margin="3 0" FontSize="14"
+                    Background="LightGreen" BorderBrush="CadetBlue" BorderThickness="1" Click="BtnCompleted_Click"/>
+            <Button x:Name="BtnInGroupPopular" Foreground="red" Width="120" Margin="3 0" FontSize="14"
+                    Background="LightGreen" BorderBrush="CadetBlue" BorderThickness="1" Click="BtnInGroupPopular_Click">
+                <TextBlock Text="в группу популярных" TextAlignment="Center" TextWrapping="Wrap"/>
+            </Button>
+        </StackPanel>
+        
+    </Grid>
+</Window>

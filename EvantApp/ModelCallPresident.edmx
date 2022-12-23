@@ -1,0 +1,929 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище CallPresidentModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Events">
+          <Key>
+            <PropertyRef Name="IdEvent" />
+          </Key>
+          <Property Name="IdEvent" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DateTimeBegin" Type="datetime" Nullable="false" />
+          <Property Name="DateTimeEnd" Type="datetime" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FederalDistricts">
+          <Key>
+            <PropertyRef Name="IdFederalDistrict" />
+          </Key>
+          <Property Name="IdFederalDistrict" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FederalDistrictName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MessageCategories">
+          <Key>
+            <PropertyRef Name="IdMessageCategories" />
+          </Key>
+          <Property Name="IdMessageCategories" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MessageCategorieName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MessageProcessing">
+          <Key>
+            <PropertyRef Name="IdMessageProcessing" />
+          </Key>
+          <Property Name="IdMessageProcessing" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MessageProcessingStaff" Type="int" Nullable="false" />
+          <Property Name="MessageProcessingMessage" Type="int" Nullable="false" />
+          <Property Name="MessageProcessingStatusMessage" Type="int" Nullable="false" />
+          <Property Name="answerComment" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Messages">
+          <Key>
+            <PropertyRef Name="IdMessage" />
+          </Key>
+          <Property Name="IdMessage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateTime" Type="datetime" Nullable="false" />
+          <Property Name="MessageUser" Type="int" Nullable="false" />
+          <Property Name="TypeMessage" Type="int" Nullable="false" />
+          <Property Name="MessageText" Type="nvarchar(max)" />
+          <Property Name="MessegeEvent" Type="int" Nullable="false" />
+          <Property Name="MediaContent" Type="nvarchar(max)" />
+          <Property Name="Processed" Type="bit" Nullable="false" />
+          <Property Name="MessageCategories" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PopularGroup">
+          <Key>
+            <PropertyRef Name="IdPopularGroup" />
+          </Key>
+          <Property Name="IdPopularGroup" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PopularGroupEvent" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PopularMessages">
+          <Key>
+            <PropertyRef Name="IdPopularMessage" />
+          </Key>
+          <Property Name="IdPopularMessage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PopularMessageMessageId" Type="int" Nullable="false" />
+          <Property Name="PopularMessagePopularGroup" Type="int" Nullable="false" />
+          <Property Name="vote" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="IdStaff" />
+          </Key>
+          <Property Name="IdStaff" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SecondName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Patronumic" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Login" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="TypeStaff" Type="int" Nullable="false" />
+          <Property Name="Online" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StaffEvent">
+          <Key>
+            <PropertyRef Name="IdStaffEvent" />
+          </Key>
+          <Property Name="IdStaffEvent" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StaffId" Type="int" Nullable="false" />
+          <Property Name="EventId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StatusMessage">
+          <Key>
+            <PropertyRef Name="IdStatusMessage" />
+          </Key>
+          <Property Name="IdStatusMessage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusMessage" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeMessage">
+          <Key>
+            <PropertyRef Name="IdTypeMessage" />
+          </Key>
+          <Property Name="IdTypeMessage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeMessage" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeStaff">
+          <Key>
+            <PropertyRef Name="IdTypeStafe" />
+          </Key>
+          <Property Name="IdTypeStafe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeStaff" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="SecondName" Type="nvarchar(max)" />
+          <Property Name="Patronymic" Type="nvarchar(max)" />
+          <Property Name="Phone" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="Age" Type="int" />
+          <Property Name="FederalDistrictId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_MessageProcessing_Messages">
+          <End Role="Messages" Type="Self.Messages" Multiplicity="1" />
+          <End Role="MessageProcessing" Type="Self.MessageProcessing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Messages">
+              <PropertyRef Name="IdMessage" />
+            </Principal>
+            <Dependent Role="MessageProcessing">
+              <PropertyRef Name="MessageProcessingMessage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessageProcessing_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+          <End Role="MessageProcessing" Type="Self.MessageProcessing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="IdStaff" />
+            </Principal>
+            <Dependent Role="MessageProcessing">
+              <PropertyRef Name="MessageProcessingStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessageProcessing_StatusMessage">
+          <End Role="StatusMessage" Type="Self.StatusMessage" Multiplicity="1" />
+          <End Role="MessageProcessing" Type="Self.MessageProcessing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusMessage">
+              <PropertyRef Name="IdStatusMessage" />
+            </Principal>
+            <Dependent Role="MessageProcessing">
+              <PropertyRef Name="MessageProcessingStatusMessage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Messages_Events">
+          <End Role="Events" Type="Self.Events" Multiplicity="1" />
+          <End Role="Messages" Type="Self.Messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Events">
+              <PropertyRef Name="IdEvent" />
+            </Principal>
+            <Dependent Role="Messages">
+              <PropertyRef Name="MessegeEvent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Messages_MessageCategories">
+          <End Role="MessageCategories" Type="Self.MessageCategories" Multiplicity="1" />
+          <End Role="Messages" Type="Self.Messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MessageCategories">
+              <PropertyRef Name="IdMessageCategories" />
+            </Principal>
+            <Dependent Role="Messages">
+              <PropertyRef Name="MessageCategories" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Messages_TypeMessage">
+          <End Role="TypeMessage" Type="Self.TypeMessage" Multiplicity="1" />
+          <End Role="Messages" Type="Self.Messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeMessage">
+              <PropertyRef Name="IdTypeMessage" />
+            </Principal>
+            <Dependent Role="Messages">
+              <PropertyRef Name="TypeMessage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Messages_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Messages" Type="Self.Messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Messages">
+              <PropertyRef Name="MessageUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PopularGroup_Events">
+          <End Role="Events" Type="Self.Events" Multiplicity="1" />
+          <End Role="PopularGroup" Type="Self.PopularGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Events">
+              <PropertyRef Name="IdEvent" />
+            </Principal>
+            <Dependent Role="PopularGroup">
+              <PropertyRef Name="PopularGroupEvent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PopularMessages_Messages">
+          <End Role="Messages" Type="Self.Messages" Multiplicity="1" />
+          <End Role="PopularMessages" Type="Self.PopularMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Messages">
+              <PropertyRef Name="IdMessage" />
+            </Principal>
+            <Dependent Role="PopularMessages">
+              <PropertyRef Name="PopularMessageMessageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PopularMessages_PopularGroup">
+          <End Role="PopularGroup" Type="Self.PopularGroup" Multiplicity="1" />
+          <End Role="PopularMessages" Type="Self.PopularMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PopularGroup">
+              <PropertyRef Name="IdPopularGroup" />
+            </Principal>
+            <Dependent Role="PopularMessages">
+              <PropertyRef Name="PopularMessagePopularGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_TypeStaff">
+          <End Role="TypeStaff" Type="Self.TypeStaff" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeStaff">
+              <PropertyRef Name="IdTypeStafe" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="TypeStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StaffEvent_Events">
+          <End Role="Events" Type="Self.Events" Multiplicity="1" />
+          <End Role="StaffEvent" Type="Self.StaffEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Events">
+              <PropertyRef Name="IdEvent" />
+            </Principal>
+            <Dependent Role="StaffEvent">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StaffEvent_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+          <End Role="StaffEvent" Type="Self.StaffEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="IdStaff" />
+            </Principal>
+            <Dependent Role="StaffEvent">
+              <PropertyRef Name="StaffId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_FederalDistricts">
+          <End Role="FederalDistricts" Type="Self.FederalDistricts" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FederalDistricts">
+              <PropertyRef Name="IdFederalDistrict" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="FederalDistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище CallPresidentModelContainer">
+          <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FederalDistricts" EntityType="Self.FederalDistricts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MessageCategories" EntityType="Self.MessageCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MessageProcessing" EntityType="Self.MessageProcessing" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PopularGroup" EntityType="Self.PopularGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PopularMessages" EntityType="Self.PopularMessages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StaffEvent" EntityType="Self.StaffEvent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusMessage" EntityType="Self.StatusMessage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeMessage" EntityType="Self.TypeMessage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeStaff" EntityType="Self.TypeStaff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_MessageProcessing_Messages" Association="Self.FK_MessageProcessing_Messages">
+            <End Role="Messages" EntitySet="Messages" />
+            <End Role="MessageProcessing" EntitySet="MessageProcessing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessageProcessing_Staff" Association="Self.FK_MessageProcessing_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="MessageProcessing" EntitySet="MessageProcessing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessageProcessing_StatusMessage" Association="Self.FK_MessageProcessing_StatusMessage">
+            <End Role="StatusMessage" EntitySet="StatusMessage" />
+            <End Role="MessageProcessing" EntitySet="MessageProcessing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Messages_Events" Association="Self.FK_Messages_Events">
+            <End Role="Events" EntitySet="Events" />
+            <End Role="Messages" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Messages_MessageCategories" Association="Self.FK_Messages_MessageCategories">
+            <End Role="MessageCategories" EntitySet="MessageCategories" />
+            <End Role="Messages" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Messages_TypeMessage" Association="Self.FK_Messages_TypeMessage">
+            <End Role="TypeMessage" EntitySet="TypeMessage" />
+            <End Role="Messages" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Messages_User" Association="Self.FK_Messages_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Messages" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PopularGroup_Events" Association="Self.FK_PopularGroup_Events">
+            <End Role="Events" EntitySet="Events" />
+            <End Role="PopularGroup" EntitySet="PopularGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PopularMessages_Messages" Association="Self.FK_PopularMessages_Messages">
+            <End Role="Messages" EntitySet="Messages" />
+            <End Role="PopularMessages" EntitySet="PopularMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PopularMessages_PopularGroup" Association="Self.FK_PopularMessages_PopularGroup">
+            <End Role="PopularGroup" EntitySet="PopularGroup" />
+            <End Role="PopularMessages" EntitySet="PopularMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_TypeStaff" Association="Self.FK_Staff_TypeStaff">
+            <End Role="TypeStaff" EntitySet="TypeStaff" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StaffEvent_Events" Association="Self.FK_StaffEvent_Events">
+            <End Role="Events" EntitySet="Events" />
+            <End Role="StaffEvent" EntitySet="StaffEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StaffEvent_Staff" Association="Self.FK_StaffEvent_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="StaffEvent" EntitySet="StaffEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_FederalDistricts" Association="Self.FK_User_FederalDistricts">
+            <End Role="FederalDistricts" EntitySet="FederalDistricts" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CallPresidentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CallPresidentEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Events" EntityType="CallPresidentModel.Events" />
+          <EntitySet Name="FederalDistricts" EntityType="CallPresidentModel.FederalDistricts" />
+          <EntitySet Name="MessageCategories" EntityType="CallPresidentModel.MessageCategories" />
+          <EntitySet Name="MessageProcessing" EntityType="CallPresidentModel.MessageProcessing" />
+          <EntitySet Name="Messages" EntityType="CallPresidentModel.Messages" />
+          <EntitySet Name="PopularGroup" EntityType="CallPresidentModel.PopularGroup" />
+          <EntitySet Name="PopularMessages" EntityType="CallPresidentModel.PopularMessages" />
+          <EntitySet Name="Staff" EntityType="CallPresidentModel.Staff" />
+          <EntitySet Name="StaffEvent" EntityType="CallPresidentModel.StaffEvent" />
+          <EntitySet Name="StatusMessage" EntityType="CallPresidentModel.StatusMessage" />
+          <EntitySet Name="TypeMessage" EntityType="CallPresidentModel.TypeMessage" />
+          <EntitySet Name="TypeStaff" EntityType="CallPresidentModel.TypeStaff" />
+          <EntitySet Name="User" EntityType="CallPresidentModel.User" />
+          <AssociationSet Name="FK_Messages_Events" Association="CallPresidentModel.FK_Messages_Events">
+            <End Role="Events" EntitySet="Events" />
+            <End Role="Messages" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PopularGroup_Events" Association="CallPresidentModel.FK_PopularGroup_Events">
+            <End Role="Events" EntitySet="Events" />
+            <End Role="PopularGroup" EntitySet="PopularGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StaffEvent_Events" Association="CallPresidentModel.FK_StaffEvent_Events">
+            <End Role="Events" EntitySet="Events" />
+            <End Role="StaffEvent" EntitySet="StaffEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_FederalDistricts" Association="CallPresidentModel.FK_User_FederalDistricts">
+            <End Role="FederalDistricts" EntitySet="FederalDistricts" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Messages_MessageCategories" Association="CallPresidentModel.FK_Messages_MessageCategories">
+            <End Role="MessageCategories" EntitySet="MessageCategories" />
+            <End Role="Messages" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessageProcessing_Messages" Association="CallPresidentModel.FK_MessageProcessing_Messages">
+            <End Role="Messages" EntitySet="Messages" />
+            <End Role="MessageProcessing" EntitySet="MessageProcessing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessageProcessing_Staff" Association="CallPresidentModel.FK_MessageProcessing_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="MessageProcessing" EntitySet="MessageProcessing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessageProcessing_StatusMessage" Association="CallPresidentModel.FK_MessageProcessing_StatusMessage">
+            <End Role="StatusMessage" EntitySet="StatusMessage" />
+            <End Role="MessageProcessing" EntitySet="MessageProcessing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Messages_TypeMessage" Association="CallPresidentModel.FK_Messages_TypeMessage">
+            <End Role="TypeMessage" EntitySet="TypeMessage" />
+            <End Role="Messages" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Messages_User" Association="CallPresidentModel.FK_Messages_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Messages" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PopularMessages_Messages" Association="CallPresidentModel.FK_PopularMessages_Messages">
+            <End Role="Messages" EntitySet="Messages" />
+            <End Role="PopularMessages" EntitySet="PopularMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PopularMessages_PopularGroup" Association="CallPresidentModel.FK_PopularMessages_PopularGroup">
+            <End Role="PopularGroup" EntitySet="PopularGroup" />
+            <End Role="PopularMessages" EntitySet="PopularMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_TypeStaff" Association="CallPresidentModel.FK_Staff_TypeStaff">
+            <End Role="TypeStaff" EntitySet="TypeStaff" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StaffEvent_Staff" Association="CallPresidentModel.FK_StaffEvent_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="StaffEvent" EntitySet="StaffEvent" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Events">
+          <Key>
+            <PropertyRef Name="IdEvent" />
+          </Key>
+          <Property Name="IdEvent" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateTimeBegin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateTimeEnd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Messages" Relationship="CallPresidentModel.FK_Messages_Events" FromRole="Events" ToRole="Messages" />
+          <NavigationProperty Name="PopularGroup" Relationship="CallPresidentModel.FK_PopularGroup_Events" FromRole="Events" ToRole="PopularGroup" />
+          <NavigationProperty Name="StaffEvent" Relationship="CallPresidentModel.FK_StaffEvent_Events" FromRole="Events" ToRole="StaffEvent" />
+        </EntityType>
+        <EntityType Name="FederalDistricts">
+          <Key>
+            <PropertyRef Name="IdFederalDistrict" />
+          </Key>
+          <Property Name="IdFederalDistrict" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FederalDistrictName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="CallPresidentModel.FK_User_FederalDistricts" FromRole="FederalDistricts" ToRole="User" />
+        </EntityType>
+        <EntityType Name="MessageCategories">
+          <Key>
+            <PropertyRef Name="IdMessageCategories" />
+          </Key>
+          <Property Name="IdMessageCategories" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MessageCategorieName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Messages" Relationship="CallPresidentModel.FK_Messages_MessageCategories" FromRole="MessageCategories" ToRole="Messages" />
+        </EntityType>
+        <EntityType Name="MessageProcessing">
+          <Key>
+            <PropertyRef Name="IdMessageProcessing" />
+          </Key>
+          <Property Name="IdMessageProcessing" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MessageProcessingStaff" Type="Int32" Nullable="false" />
+          <Property Name="MessageProcessingMessage" Type="Int32" Nullable="false" />
+          <Property Name="MessageProcessingStatusMessage" Type="Int32" Nullable="false" />
+          <Property Name="answerComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Messages" Relationship="CallPresidentModel.FK_MessageProcessing_Messages" FromRole="MessageProcessing" ToRole="Messages" />
+          <NavigationProperty Name="Staff" Relationship="CallPresidentModel.FK_MessageProcessing_Staff" FromRole="MessageProcessing" ToRole="Staff" />
+          <NavigationProperty Name="StatusMessage" Relationship="CallPresidentModel.FK_MessageProcessing_StatusMessage" FromRole="MessageProcessing" ToRole="StatusMessage" />
+        </EntityType>
+        <EntityType Name="Messages">
+          <Key>
+            <PropertyRef Name="IdMessage" />
+          </Key>
+          <Property Name="IdMessage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MessageUser" Type="Int32" Nullable="false" />
+          <Property Name="TypeMessage" Type="Int32" Nullable="false" />
+          <Property Name="MessageText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MessegeEvent" Type="Int32" Nullable="false" />
+          <Property Name="MediaContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Processed" Type="Boolean" Nullable="false" />
+          <Property Name="MessageCategories" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Events" Relationship="CallPresidentModel.FK_Messages_Events" FromRole="Messages" ToRole="Events" />
+          <NavigationProperty Name="MessageCategories1" Relationship="CallPresidentModel.FK_Messages_MessageCategories" FromRole="Messages" ToRole="MessageCategories" />
+          <NavigationProperty Name="MessageProcessing" Relationship="CallPresidentModel.FK_MessageProcessing_Messages" FromRole="Messages" ToRole="MessageProcessing" />
+          <NavigationProperty Name="TypeMessage1" Relationship="CallPresidentModel.FK_Messages_TypeMessage" FromRole="Messages" ToRole="TypeMessage" />
+          <NavigationProperty Name="User" Relationship="CallPresidentModel.FK_Messages_User" FromRole="Messages" ToRole="User" />
+          <NavigationProperty Name="PopularMessages" Relationship="CallPresidentModel.FK_PopularMessages_Messages" FromRole="Messages" ToRole="PopularMessages" />
+        </EntityType>
+        <EntityType Name="PopularGroup">
+          <Key>
+            <PropertyRef Name="IdPopularGroup" />
+          </Key>
+          <Property Name="IdPopularGroup" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PopularGroupEvent" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Events" Relationship="CallPresidentModel.FK_PopularGroup_Events" FromRole="PopularGroup" ToRole="Events" />
+          <NavigationProperty Name="PopularMessages" Relationship="CallPresidentModel.FK_PopularMessages_PopularGroup" FromRole="PopularGroup" ToRole="PopularMessages" />
+        </EntityType>
+        <EntityType Name="PopularMessages">
+          <Key>
+            <PropertyRef Name="IdPopularMessage" />
+          </Key>
+          <Property Name="IdPopularMessage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PopularMessageMessageId" Type="Int32" Nullable="false" />
+          <Property Name="PopularMessagePopularGroup" Type="Int32" Nullable="false" />
+          <Property Name="vote" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Messages" Relationship="CallPresidentModel.FK_PopularMessages_Messages" FromRole="PopularMessages" ToRole="Messages" />
+          <NavigationProperty Name="PopularGroup" Relationship="CallPresidentModel.FK_PopularMessages_PopularGroup" FromRole="PopularMessages" ToRole="PopularGroup" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="IdStaff" />
+          </Key>
+          <Property Name="IdStaff" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecondName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Patronumic" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TypeStaff" Type="Int32" Nullable="false" />
+          <Property Name="Online" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="MessageProcessing" Relationship="CallPresidentModel.FK_MessageProcessing_Staff" FromRole="Staff" ToRole="MessageProcessing" />
+          <NavigationProperty Name="TypeStaff1" Relationship="CallPresidentModel.FK_Staff_TypeStaff" FromRole="Staff" ToRole="TypeStaff" />
+          <NavigationProperty Name="StaffEvent" Relationship="CallPresidentModel.FK_StaffEvent_Staff" FromRole="Staff" ToRole="StaffEvent" />
+        </EntityType>
+        <EntityType Name="StaffEvent">
+          <Key>
+            <PropertyRef Name="IdStaffEvent" />
+          </Key>
+          <Property Name="IdStaffEvent" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StaffId" Type="Int32" Nullable="false" />
+          <Property Name="EventId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Events" Relationship="CallPresidentModel.FK_StaffEvent_Events" FromRole="StaffEvent" ToRole="Events" />
+          <NavigationProperty Name="Staff" Relationship="CallPresidentModel.FK_StaffEvent_Staff" FromRole="StaffEvent" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="StatusMessage">
+          <Key>
+            <PropertyRef Name="IdStatusMessage" />
+          </Key>
+          <Property Name="IdStatusMessage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusMessage1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MessageProcessing" Relationship="CallPresidentModel.FK_MessageProcessing_StatusMessage" FromRole="StatusMessage" ToRole="MessageProcessing" />
+        </EntityType>
+        <EntityType Name="TypeMessage">
+          <Key>
+            <PropertyRef Name="IdTypeMessage" />
+          </Key>
+          <Property Name="IdTypeMessage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeMessage1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Messages" Relationship="CallPresidentModel.FK_Messages_TypeMessage" FromRole="TypeMessage" ToRole="Messages" />
+        </EntityType>
+        <EntityType Name="TypeStaff">
+          <Key>
+            <PropertyRef Name="IdTypeStafe" />
+          </Key>
+          <Property Name="IdTypeStafe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeStaff1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Staff" Relationship="CallPresidentModel.FK_Staff_TypeStaff" FromRole="TypeStaff" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecondName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="FederalDistrictId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FederalDistricts" Relationship="CallPresidentModel.FK_User_FederalDistricts" FromRole="User" ToRole="FederalDistricts" />
+          <NavigationProperty Name="Messages" Relationship="CallPresidentModel.FK_Messages_User" FromRole="User" ToRole="Messages" />
+        </EntityType>
+        <Association Name="FK_Messages_Events">
+          <End Type="CallPresidentModel.Events" Role="Events" Multiplicity="1" />
+          <End Type="CallPresidentModel.Messages" Role="Messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Events">
+              <PropertyRef Name="IdEvent" />
+            </Principal>
+            <Dependent Role="Messages">
+              <PropertyRef Name="MessegeEvent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PopularGroup_Events">
+          <End Type="CallPresidentModel.Events" Role="Events" Multiplicity="1" />
+          <End Type="CallPresidentModel.PopularGroup" Role="PopularGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Events">
+              <PropertyRef Name="IdEvent" />
+            </Principal>
+            <Dependent Role="PopularGroup">
+              <PropertyRef Name="PopularGroupEvent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StaffEvent_Events">
+          <End Type="CallPresidentModel.Events" Role="Events" Multiplicity="1" />
+          <End Type="CallPresidentModel.StaffEvent" Role="StaffEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Events">
+              <PropertyRef Name="IdEvent" />
+            </Principal>
+            <Dependent Role="StaffEvent">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_FederalDistricts">
+          <End Type="CallPresidentModel.FederalDistricts" Role="FederalDistricts" Multiplicity="1" />
+          <End Type="CallPresidentModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FederalDistricts">
+              <PropertyRef Name="IdFederalDistrict" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="FederalDistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Messages_MessageCategories">
+          <End Type="CallPresidentModel.MessageCategories" Role="MessageCategories" Multiplicity="1" />
+          <End Type="CallPresidentModel.Messages" Role="Messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MessageCategories">
+              <PropertyRef Name="IdMessageCategories" />
+            </Principal>
+            <Dependent Role="Messages">
+              <PropertyRef Name="MessageCategories" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessageProcessing_Messages">
+          <End Type="CallPresidentModel.Messages" Role="Messages" Multiplicity="1" />
+          <End Type="CallPresidentModel.MessageProcessing" Role="MessageProcessing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Messages">
+              <PropertyRef Name="IdMessage" />
+            </Principal>
+            <Dependent Role="MessageProcessing">
+              <PropertyRef Name="MessageProcessingMessage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessageProcessing_Staff">
+          <End Type="CallPresidentModel.Staff" Role="Staff" Multiplicity="1" />
+          <End Type="CallPresidentModel.MessageProcessing" Role="MessageProcessing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="IdStaff" />
+            </Principal>
+            <Dependent Role="MessageProcessing">
+              <PropertyRef Name="MessageProcessingStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessageProcessing_StatusMessage">
+          <End Type="CallPresidentModel.StatusMessage" Role="StatusMessage" Multiplicity="1" />
+          <End Type="CallPresidentModel.MessageProcessing" Role="MessageProcessing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusMessage">
+              <PropertyRef Name="IdStatusMessage" />
+            </Principal>
+            <Dependent Role="MessageProcessing">
+              <PropertyRef Name="MessageProcessingStatusMessage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Messages_TypeMessage">
+          <End Type="CallPresidentModel.TypeMessage" Role="TypeMessage" Multiplicity="1" />
+          <End Type="CallPresidentModel.Messages" Role="Messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeMessage">
+              <PropertyRef Name="IdTypeMessage" />
+            </Principal>
+            <Dependent Role="Messages">
+              <PropertyRef Name="TypeMessage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Messages_User">
+          <End Type="CallPresidentModel.User" Role="User" Multiplicity="1" />
+          <End Type="CallPresidentModel.Messages" Role="Messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Messages">
+              <PropertyRef Name="MessageUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PopularMessages_Messages">
+          <End Type="CallPresidentModel.Messages" Role="Messages" Multiplicity="1" />
+          <End Type="CallPresidentModel.PopularMessages" Role="PopularMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Messages">
+              <PropertyRef Name="IdMessage" />
+            </Principal>
+            <Dependent Role="PopularMessages">
+              <PropertyRef Name="PopularMessageMessageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PopularMessages_PopularGroup">
+          <End Type="CallPresidentModel.PopularGroup" Role="PopularGroup" Multiplicity="1" />
+          <End Type="CallPresidentModel.PopularMessages" Role="PopularMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PopularGroup">
+              <PropertyRef Name="IdPopularGroup" />
+            </Principal>
+            <Dependent Role="PopularMessages">
+              <PropertyRef Name="PopularMessagePopularGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_TypeStaff">
+          <End Type="CallPresidentModel.TypeStaff" Role="TypeStaff" Multiplicity="1" />
+          <End Type="CallPresidentModel.Staff" Role="Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeStaff">
+              <PropertyRef Name="IdTypeStafe" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="TypeStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StaffEvent_Staff">
+          <End Type="CallPresidentModel.Staff" Role="Staff" Multiplicity="1" />
+          <End Type="CallPresidentModel.StaffEvent" Role="StaffEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="IdStaff" />
+            </Principal>
+            <Dependent Role="StaffEvent">
+              <PropertyRef Name="StaffId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище CallPresidentModelContainer" CdmEntityContainer="CallPresidentEntities">
+          <EntitySetMapping Name="Events">
+            <EntityTypeMapping TypeName="CallPresidentModel.Events">
+              <MappingFragment StoreEntitySet="Events">
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="DateTimeEnd" ColumnName="DateTimeEnd" />
+                <ScalarProperty Name="DateTimeBegin" ColumnName="DateTimeBegin" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdEvent" ColumnName="IdEvent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FederalDistricts">
+            <EntityTypeMapping TypeName="CallPresidentModel.FederalDistricts">
+              <MappingFragment StoreEntitySet="FederalDistricts">
+                <ScalarProperty Name="FederalDistrictName" ColumnName="FederalDistrictName" />
+                <ScalarProperty Name="IdFederalDistrict" ColumnName="IdFederalDistrict" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MessageCategories">
+            <EntityTypeMapping TypeName="CallPresidentModel.MessageCategories">
+              <MappingFragment StoreEntitySet="MessageCategories">
+                <ScalarProperty Name="MessageCategorieName" ColumnName="MessageCategorieName" />
+                <ScalarProperty Name="IdMessageCategories" ColumnName="IdMessageCategories" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MessageProcessing">
+            <EntityTypeMapping TypeName="CallPresidentModel.MessageProcessing">
+              <MappingFragment StoreEntitySet="MessageProcessing">
+                <ScalarProperty Name="answerComment" ColumnName="answerComment" />
+                <ScalarProperty Name="MessageProcessingStatusMessage" ColumnName="MessageProcessingStatusMessage" />
+                <ScalarProperty Name="MessageProcessingMessage" ColumnName="MessageProcessingMessage" />
+                <ScalarProperty Name="MessageProcessingStaff" ColumnName="MessageProcessingStaff" />
+                <ScalarProperty Name="IdMessageProcessing" ColumnName="IdMessageProcessing" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Messages">
+            <EntityTypeMapping TypeName="CallPresidentModel.Messages">
+              <MappingFragment StoreEntitySet="Messages">
+                <ScalarProperty Name="MessageCategories" ColumnName="MessageCategories" />
+                <ScalarProperty Name="Processed" ColumnName="Processed" />
+                <ScalarProperty Name="MediaContent" ColumnName="MediaContent" />
+                <ScalarProperty Name="MessegeEvent" ColumnName="MessegeEvent" />
+                <ScalarProperty Name="MessageText" ColumnName="MessageText" />
+                <ScalarProperty Name="TypeMessage" ColumnName="TypeMessage" />
+                <ScalarProperty Name="MessageUser" ColumnName="MessageUser" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="IdMessage" ColumnName="IdMessage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PopularGroup">
+            <EntityTypeMapping TypeName="CallPresidentModel.PopularGroup">
+              <MappingFragment StoreEntitySet="PopularGroup">
+                <ScalarProperty Name="PopularGroupEvent" ColumnName="PopularGroupEvent" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="IdPopularGroup" ColumnName="IdPopularGroup" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PopularMessages">
+            <EntityTypeMapping TypeName="CallPresidentModel.PopularMessages">
+              <MappingFragment StoreEntitySet="PopularMessages">
+                <ScalarProperty Name="vote" ColumnName="vote" />
+                <ScalarProperty Name="PopularMessagePopularGroup" ColumnName="PopularMessagePopularGroup" />
+                <ScalarProperty Name="PopularMessageMessageId" ColumnName="PopularMessageMessageId" />
+                <ScalarProperty Name="IdPopularMessage" ColumnName="IdPopularMessage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staff">
+            <EntityTypeMapping TypeName="CallPresidentModel.Staff">
+              <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="Online" ColumnName="Online" />
+                <ScalarProperty Name="TypeStaff" ColumnName="TypeStaff" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Patronumic" ColumnName="Patronumic" />
+                <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="IdStaff" ColumnName="IdStaff" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StaffEvent">
+            <EntityTypeMapping TypeName="CallPresidentModel.StaffEvent">
+              <MappingFragment StoreEntitySet="StaffEvent">
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+                <ScalarProperty Name="IdStaffEvent" ColumnName="IdStaffEvent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusMessage">
+            <EntityTypeMapping TypeName="CallPresidentModel.StatusMessage">
+              <MappingFragment StoreEntitySet="StatusMessage">
+                <ScalarProperty Name="StatusMessage1" ColumnName="StatusMessage" />
+                <ScalarProperty Name="IdStatusMessage" ColumnName="IdStatusMessage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeMessage">
+            <EntityTypeMapping TypeName="CallPresidentModel.TypeMessage">
+              <MappingFragment StoreEntitySet="TypeMessage">
+                <ScalarProperty Name="TypeMessage1" ColumnName="TypeMessage" />
+                <ScalarProperty Name="IdTypeMessage" ColumnName="IdTypeMessage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeStaff">
+            <EntityTypeMapping TypeName="CallPresidentModel.TypeStaff">
+              <MappingFragment StoreEntitySet="TypeStaff">
+                <ScalarProperty Name="TypeStaff1" ColumnName="TypeStaff" />
+                <ScalarProperty Name="IdTypeStafe" ColumnName="IdTypeStafe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="CallPresidentModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="FederalDistrictId" ColumnName="FederalDistrictId" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
